@@ -36,7 +36,7 @@ jobs:
         run: mvn clean package
 
       - name: Show new version
-        run: echo "New version: ${{ steps.version.outputs.new_version }}"
+        run: echo 'New version: ${{ steps.version.outputs.new_version }}'
 
       - name: Log in to DockerHub
         uses: docker/login-action@v2
@@ -54,4 +54,3 @@ jobs:
         run: |
           docker tag ${{ secrets.DOCKER_USERNAME }}/simple-java-maven-app:${{ steps.version.outputs.new_version }} ${{ secrets.DOCKER_USERNAME }}/simple-java-maven-app:latest
           docker push ${{ secrets.DOCKER_USERNAME }}/simple-java-maven-app:latest
-
